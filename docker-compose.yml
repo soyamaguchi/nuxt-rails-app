@@ -2,8 +2,6 @@ version: '3'
 services:
   db:
     build: ./backend/containers/postgres
-    environment:
-      - POSTGRES_PASSWORD=password
     volumes:
       - ./backend/db/pgdata:/var/lib/postgresql/data
     ports:
@@ -29,4 +27,3 @@ services:
     depends_on:
       - backend
     tty: true
-
