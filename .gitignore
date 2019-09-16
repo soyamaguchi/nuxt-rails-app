@@ -23,9 +23,9 @@
 # Ignore master key for decrypting credentials and more.
 /backend/config/master.key
 
- /backend/db/pgdata
- /backend/vendor
- /backend/.env
+/backend/db/pgdata
+/backend/vendor
+/backend/.env
 
 # frontend
 

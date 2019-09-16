@@ -4,8 +4,6 @@ services:
     build: ./backend/containers/postgres
     volumes:
       - ./backend/db/pgdata:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"  
   backend:
     build: ./backend
     command: /bin/bash -c "rm -rf tmp/pids/server.pid; bundle exec rails s -p 3000 -b 0.0.0.0"

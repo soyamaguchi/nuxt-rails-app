@@ -13,4 +13,3 @@ RUN gem install bundler:2.0.2 && bundle install
 COPY . $APP_DIR
 
 CMD ["rails", "server", "-b", "0.0.0.0"]
-
