@@ -11,4 +11,5 @@ WORKDIR $APP_DIR
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 COPY package.json $APP_DIR/package.json
 COPY yarn.lock $APP_DIR/yarn.lock
-RUN yarn install --no-progress --registry http://registry.npmjs.org/
+RUN yarn install
+COPY . $APP_DIR

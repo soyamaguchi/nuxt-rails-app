@@ -27,7 +27,9 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    // 'plugins/axios'
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -40,6 +42,7 @@ export default {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
+    // '@nuxtjs/proxy',
     '@nuxtjs/axios',
     '@nuxtjs/pwa'
   ],
@@ -47,7 +50,15 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    // proxy: true
+    host: 'localhost',
+    port: '8080',
+    prefix: '/api/v1'
+  },
+  // proxy: {
+  //   '/api': 'http://localhost:8080'
+  // },
   /*
    ** Build configuration
    */

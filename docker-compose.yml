@@ -4,13 +4,15 @@ services:
     build: ./backend/containers/postgres
     volumes:
       - ./backend/db/pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"  
   backend:
     build: ./backend
-    command: /bin/bash -c "rm -rf tmp/pids/server.pid; bundle exec rails s -p 3000 -b 0.0.0.0"
+    command: /bin/bash -c "rm -rf tmp/pids/server.pid; bundle exec rails s -p 8080 -b 0.0.0.0"
     volumes:
       - ./backend:/app/backend
     ports:
-      - "3000:3000"
+      - "8080:8080"
     depends_on:
       - db
     tty: true
@@ -21,7 +23,7 @@ services:
     volumes:
       - ./frontend:/app/frontend
     ports:
-      - "8000:3000"
+      - "3000:3000"
     depends_on:
       - backend
     tty: true
