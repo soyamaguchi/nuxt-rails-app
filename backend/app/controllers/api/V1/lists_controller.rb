@@ -4,9 +4,7 @@ module Api::V1
 
     # GET /lists
     def index
-      # @lists = List.all
-      @lists = List.first
-      puts @lists.id
+      @lists = List.all
 
       render json: @lists
     end
@@ -21,7 +19,7 @@ module Api::V1
       @list = List.new(list_params)
         
       if @list.save
-        render json: @list, status: :created, location: @list
+        render json: @list, status: :created
       else
         render json: @list.errors, status: :unprocessable_entity
       end

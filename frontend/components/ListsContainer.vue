@@ -1,16 +1,22 @@
 <template>
   <div class="lists">
-    <!-- <div v-for="list in lists" :key="list.id"> -->
-    {{ lists.title }}
-    <!-- </div> -->
+    <div v-for="list in lists" :key="list.id" class="lists__item">
+      {{ list.title }}
+    </div>
+    <NewListForm />
   </div>
 </template>
 
 <script>
+import NewListForm from './NewListForm.vue'
+
 export default {
+  components: {
+    NewListForm
+  },  
   data() {
     return {
-      lists: {}
+      lists: []
     }
   },
   mounted() {
@@ -24,4 +30,4 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped></style>
