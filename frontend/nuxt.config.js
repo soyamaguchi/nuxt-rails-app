@@ -42,7 +42,7 @@ export default {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    // '@nuxtjs/proxy',
+    '@nuxtjs/proxy',
     '@nuxtjs/vuetify',
     '@nuxtjs/axios',
     '@nuxtjs/pwa'
@@ -52,14 +52,22 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    // proxy: true
-    host: 'localhost',
-    port: '8080',
-    prefix: '/api/v1'
+    proxy: true
+    /** backendのコンテナip */
+    // host: '172.31.0.3',
+    // port: '8080',
+    // prefix: '/api/v1'
   },
-  // proxy: {
-  //   '/api': 'http://localhost:8080'
-  // },
+  proxy: {
+    '/api/v1/': {
+      /** backendのコンテナip */
+      // target: 'http://backend:8080',
+      target: 'http://192.168.32.3:8080',
+      pathRewrite: {
+        '^/api/v1/': '/api/v1/'
+      },
+    }
+  },
   /*
    ** Build configuration
    */

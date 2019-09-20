@@ -3,6 +3,7 @@
     <v-app>
       <v-toolbar>
         <n-link id="top" to="/">Separate Sample</n-link>
+        <n-link id="about" to="/about">about</n-link>
       </v-toolbar>
       <v-content>
         <v-container fluid>

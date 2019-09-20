@@ -13,3 +13,5 @@ COPY package.json $APP_DIR/package.json
 COPY yarn.lock $APP_DIR/yarn.lock
 RUN yarn install
 COPY . $APP_DIR
+
+EXPOSE 3000

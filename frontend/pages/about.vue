@@ -1,16 +1,13 @@
 <template>
-  <div class="home">
-    <ListsContainer />
+  <div class="about">
+    <div v-for="list in lists" :key="list.id" class="lists__item">
+      {{ list.title }}
+    </div>
   </div>
 </template>
 
 <script>
-import ListsContainer from '~/components/ListsContainer.vue'
-
 export default {
-  components: {
-    ListsContainer
-  },
   data() {
     return {
       lists: []

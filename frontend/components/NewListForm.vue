@@ -7,7 +7,9 @@
           <v-text-field v-model="excerpt" label="excerpt" type="text" />
         </v-form>
         <v-card-actions>
-          <v-btn @click="addList">Add List</v-btn>
+          <v-btn class="mx-2" fab dark color="indigo" @click="addList">
+            <v-icon dark>mdi-plus</v-icon>
+          </v-btn>
         </v-card-actions>
       </v-card-text>
     </v-card>
@@ -25,9 +27,12 @@ export default {
   methods: {
     addList() {
       this.$axios
-        .$post('/lists', { title: this.title, excerpt: this.excerpt })
+        .$post('/api/v1/lists', { title: this.title, excerpt: this.excerpt })
         .then((res) => {
-          this.$router.push({ path: '/' })
+          this.$parent.lists.push(res)
+        })
+        .catch((err) => {
+          console.log(err)
         })
     }
   }
