@@ -1,26 +1,22 @@
 <template>
   <div class="lists">
-    <div v-for="list in lists" :key="list.id" class="lists__item">
+    <div v-for="list in this.$parent.lists" :key="list.id" class="lists__item">
       <h2>{{ list.title }}</h2>
       <v-btn class="mx-2" fab dark color="pink" @click="removeList(list.id)">
         <v-icon dark>mdi-minus</v-icon>
       </v-btn>
+      <v-btn class="mx-2" fab dark color="cyan" @click="$emit('set', list)">
+        <v-icon dark>mdi-pencil</v-icon>
+      </v-btn>
     </div>
-    <NewListForm :lists="lists" />
   </div>
 </template>
 
 <script>
-import NewListForm from './NewListForm.vue'
-
 export default {
-  components: {
-    NewListForm
-  },
+  components: {},
   data() {
-    return {
-      lists: this.$parent.lists
-    }
+    return {}
   },
   mounted() {},
   methods: {
@@ -28,9 +24,8 @@ export default {
       this.$axios
         .delete(`/api/v1/lists/${id}`)
         .then((res) => {
-          // const lists = this.$parent.lists.filter((l) => l.id !== id)
-          this.$parent.lists.splice(0, 1)
-          // this.$set(this.$parent.lists, 0, lists)
+          const lists = this.$parent.lists.filter((l) => l.id !== id)
+          this.$parent.lists = lists
         })
         .catch((err) => {
           console.log(err)
