@@ -1,23 +1,30 @@
 <template>
   <div class="home">
-    <ListsContainer @set="editList" />
-    <NewListForm />
+    <template v-if="editTargetList">
+      <EditListForm :list="editTargetList" @set="editingList" />
+    </template>
+    <template v-else>
+      <ListsContainer @set="editingList" />
+      <NewListForm />
+    </template>
   </div>
 </template>
 
 <script>
 import ListsContainer from '~/components/ListsContainer.vue'
 import NewListForm from '~/components/NewListForm.vue'
+import EditListForm from '~/components/EditListForm.vue'
 
 export default {
   components: {
     ListsContainer,
-    NewListForm
+    NewListForm,
+    EditListForm
   },
   data() {
     return {
       lists: [],
-      editingList: ''
+      editTargetList: ''
     }
   },
   async asyncData({ $axios }) {
@@ -25,8 +32,8 @@ export default {
     return { lists: data }
   },
   methods: {
-    editList(list) {
-      this.editingList = list
+    editingList(list = '') {
+      this.editTargetList = list
     }
   }
 }
