@@ -4,8 +4,8 @@
       <EditListForm :list="editTargetList" @set="editingList" />
     </template>
     <template v-else>
-      <ListsContainer @set="editingList" />
       <NewListForm />
+      <ListsContainer @set="editingList" />
     </template>
   </div>
 </template>
@@ -40,6 +40,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.home {
+  width: 100vw;
+}
+
 .flex {
   margin-bottom: 2rem;
 }
